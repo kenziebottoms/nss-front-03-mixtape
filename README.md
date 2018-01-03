@@ -24,7 +24,7 @@ Experimentation with the Spotify, TMDb, and Goodreads APIs.
 - [TV show endpoints](https://developers.themoviedb.org/3/tv/get-tv-details)
 - [Your API key](https://www.themoviedb.org/settings/api)
 
-### Goodreads
+~~### Goodreads~~
 
 #### [API docs](https://www.goodreads.com/api)
 
