@@ -1,7 +1,7 @@
 {
   "name": "name",
   "version": "1.0.0",
-  "description": "",
+  "description": "### Initialize an `npm` project for use with Grunt",
   "main": "Gruntfile.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,5 +16,13 @@
     "grunt-contrib-sass": "^1.0.0",
     "grunt-contrib-watch": "^1.0.0",
     "matchdep": "^2.0.0"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kenziebottoms/nss-front-03-mixtape.git"
+  },
+  "bugs": {
+    "url": "https://github.com/kenziebottoms/nss-front-03-mixtape/issues"
+  },
+  "homepage": "https://github.com/kenziebottoms/nss-front-03-mixtape#readme"
 }
