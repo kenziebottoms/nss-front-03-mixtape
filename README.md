@@ -18,10 +18,11 @@ Experimentation with the Spotify, TMDb, and Goodreads APIs.
 
 ### The Movie Db
 
-#### [API docs](https://www.themoviedb.org/documentation/api)
+#### [API docs](https://developers.themoviedb.org/3)
 
 - [Movie endpoints](https://developers.themoviedb.org/3/movies/get-movie-details)
 - [TV show endpoints](https://developers.themoviedb.org/3/tv/get-tv-details)
+- [Your API key](https://www.themoviedb.org/settings/api)
 
 ### Goodreads
 
