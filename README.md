@@ -18,7 +18,7 @@ Experimentation with the Spotify, TMDb, and Goodreads APIs.
 
 ### The Movie Db
 
-#### [API docs](https://www.themoviedb.org/documentation/apihttps://developers.themoviedb.org/3/getting-started/introduction)
+#### [API docs](https://www.themoviedb.org/documentation/api)
 
 - [Movie endpoints](https://developers.themoviedb.org/3/movies/get-movie-details)
 - [TV show endpoints](https://developers.themoviedb.org/3/tv/get-tv-details)
