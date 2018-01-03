@@ -2,8 +2,9 @@
 
 const activateButtons = () => {
     $("button.books").click(event => {
+        let term = $("input.books").val();
         $.ajax({
-            url: "https://www.googleapis.com/books/v1/volumes?q=quilting&maxResults=5",
+            url: `https://www.googleapis.com/books/v1/volumes?q=${term}&maxResults=5`,
             crossDomain : true
         }).done(response => $("pre.books").html(JSON.stringify(response)));
     });
@@ -11,8 +12,9 @@ const activateButtons = () => {
         console.log("Spotify");
     });
     $("button.tmdb").click(event => {
+        let term = $("input.tmdb").val();
         $.ajax({
-            url: "https://api.themoviedb.org/3/search/tv?api_key=d7208980a35f7aef364e81fcb05147a4&language=en-US&query=sense8"
+            url: `https://api.themoviedb.org/3/search/tv?api_key=d7208980a35f7aef364e81fcb05147a4&language=en-US&query=${term}`
         }).done(response => $("pre.tmdb").html(JSON.stringify(response)));
     });
 };
