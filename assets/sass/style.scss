@@ -9,12 +9,11 @@ button {
     cursor: pointer;
 }
 
-song.search-result {
+.search-result {
     margin: .5rem 0;
     display: flex;
     .card-body {
-        padding-top: 0;
-        padding-bottom: 0;
+        padding: 0 .75rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
