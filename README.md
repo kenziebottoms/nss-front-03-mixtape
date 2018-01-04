@@ -4,6 +4,26 @@
 
 Experimentation with the Spotify, TMDb, and ~~Goodreads~~ Google Books APIs.
 
+## Goals
+
+### API Goals
+
+- [x] Authenticate with Spotify.
+  - [x] Fetch search results for songs through Spotify API.
+    - [x] Format results nicely.
+- [x] Fetch search results for movies through TMDb API.
+  - [x] Format results nicely.
+- [x] Fetch search results for TV shows through TMDb API.
+  - [x] Format results nicely.
+- [x] Fetch search results for books through Google Books API.
+  - [x] Format results nicely.
+
+### Firebase
+
+- [ ] Store Spotify user data in Firebase.
+- [ ] Allow user to favorite music or media.
+- [ ] Display information relevant to user's favorite music/media.
+
 ---
 
 ## Resources
