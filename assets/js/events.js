@@ -1,5 +1,6 @@
 "use strict";
 
+const spotify = require("./spotify_auth");
 const keys = require("./api_keys");
 
 const activateButtons = () => {
@@ -49,7 +50,6 @@ const initSpotifyAuth = () => {
         window.location.href = `https://accounts.spotify.com/authorize?client_id=${keys.spotify_public}&redirect_uri=http:%2F%2Flocalhost:8080%2Fcallback.html&scope=user-top-read%20user-read-currently-playing&response_type=token`;
     });
     // populate correct spotify buttons
-    const spotify = require("./spotify_auth");
     let spotify_token = spotify.getAccessToken();
     if (spotify_token) {
         $(".spotify.authorized").removeClass("d-none");
