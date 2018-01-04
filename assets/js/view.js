@@ -3,17 +3,17 @@
 // ----- SPOTIFY ----- //
 
 // takes track search response and formats songs in DOM
-const formatTrackSearchResults = data => {
+const formatSongSearchResults = data => {
     let songs = data.tracks.items;
     if (songs.length > 0) {
         $("#song-results").html("");
         songs.forEach(song => {
-            $("#song-results").append(getTrackSearchCard(song));
+            $("#song-results").append(getSongSearchCard(song));
         });
     }
 };
 // returns raw HTML of track search result
-const getTrackSearchCard = song => {
+const getSongSearchCard = song => {
     return `<song class="search-result" data-spotify-id="${song.id}">
         <img height="64" class="card-img-left" src="${song.album.images[2].url}">
         <div class="card-body">
@@ -27,14 +27,13 @@ const getTrackSearchCard = song => {
 
 const formatMovieSearchResults = data => {
     if (data.total_results > 0) {
-        $("#tmdb-results").html("");
+        $("#movie-results").html("");
         let movies = data.results.slice(0,5);
         movies.forEach(movie => {
             $("#movie-results").append(getMovieSearchCard(movie));
         });
     }
 };
-
 const getMovieSearchCard = movie => {
     let card = `<movie class="search-result" data-tmdb-id="">`;
         if (movie.poster_path != null) {
@@ -45,6 +44,28 @@ const getMovieSearchCard = movie => {
             <h6 class="card-subtitle text-muted">${movie.release_date.substr(0,4)}</h6>
         </div>
     </movie>`;
+    return card;
+};
+
+const formatTVSearchResults = data => {
+    if (data.total_results > 0) {
+        $("#tv-results").html("");
+        let shows = data.results.slice(0,5);
+        shows.forEach(show => {
+            $("#tv-results").append(getTVSearchCard(show));
+        });
+    }
+};
+const getTVSearchCard = show => {
+    let card = `<show class="search-result" data-tmdb-id="">`;
+        if (show.poster_path != null) {
+            card += `<img height="64" width="auto" class="card-img-left" src="https://image.tmdb.org/t/p/w400_and_h600_bestv2${show.poster_path}">`;
+        }
+        card += `<div class="card-body">
+            <h5 class="card-title">${show.name}</h5>
+            <h6 class="card-subtitle text-muted">${show.first_air_date.substr(0,4)}</h6>
+        </div>
+    </show>`;
     return card;
 };
 
@@ -75,4 +96,4 @@ const getBookSearchCard = book => {
     return card;
 };
 
-module.exports = {formatTrackSearchResults, formatMovieSearchResults, formatBookSearchResults};
+module.exports = {formatSongSearchResults, formatMovieSearchResults, formatBookSearchResults, formatTVSearchResults};

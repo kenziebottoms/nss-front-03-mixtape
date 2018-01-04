@@ -9,15 +9,16 @@ const activateButtons = () => {
 };
 
 const activateSearchButtons = () => {
-    activateGoogleBooksSearchButton();
-    activateMoveDatabaseSearchButton();
+    activateBookSearchButton();
+    activateMovieSearchButton();
+    activateTVSearchButton();
     initSpotifyAuth();
 };
 
 // ----- SEARCH BUTTONS ----- //
 
 // google books
-const activateGoogleBooksSearchButton = () => {
+const activateBookSearchButton = () => {
     $("button.books").click(event => {
         let term = $("input.books").val();
         $.ajax({
@@ -37,18 +38,29 @@ const activateSpotifySearchButton = token => {
                 "Authorization": `Bearer ${token}`
             }
         }).done(response => {
-            view.formatTrackSearchResults(response);
+            view.formatSongSearchResults(response);
         });
     });
 };
 // the movie database
-const activateMoveDatabaseSearchButton = () => {
-    $("button.tmdb").click(event => {
-        let term = $("input.tmdb").val();
+const activateMovieSearchButton = () => {
+    $("button.tmdb.movies").click(event => {
+        let term = $("input.tmdb.movies").val();
         $.ajax({
             url: `https://api.themoviedb.org/3/search/movie?api_key=${keys.tmdb_public}&language=en-US&query=${encodeURI(term)}`
         }).done(response => {
             view.formatMovieSearchResults(response);
+        });
+    });
+};
+// the movie database: tv
+const activateTVSearchButton = () => {
+    $("button.tmdb.tv").click(event => {
+        let term = $("input.tmdb.tv").val();
+        $.ajax({
+            url: `https://api.themoviedb.org/3/search/tv?api_key=${keys.tmdb_public}&language=en-US&query=${encodeURI(term)}`
+        }).done(response => {
+            view.formatTVSearchResults(response);
         });
     });
 };
