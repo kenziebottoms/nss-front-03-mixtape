@@ -1,0 +1,22 @@
+{
+    "songs": [
+        {
+            "id": "54bO9jrn1NExmpg6Afsc2A",
+            "title": "Salt",
+            "artist": "Bad Suns",
+            "album_cover": "https://i.scdn.co/image/2ed6f4a26d7e6ec311901d8694ed18b4097d3866",
+            "album": "Language & Perspective",
+            "last_cached": 1515103391,
+            "added": 1514844624
+        },
+        {
+            "id": "2W7DkWXBgqLQmlCBIxeqVe",
+            "title": "Hello Hurricane",
+            "artist": "Switchfoot",
+            "album_cover": "https://i.scdn.co/image/8540b06aa75795f704165699b9f86040d8fc064f",
+            "album": "Hello Hurricane",
+            "last_cached": 1515103391,
+            "added": 1514844644
+        }
+    ]
+}
