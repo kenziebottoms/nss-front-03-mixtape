@@ -67,20 +67,10 @@ const authorize = () => {
 };
 
 const getCurrentUser = () => {
-    return localStorage.getItem("spotify_user");
+    return JSON.parse(localStorage.getItem("spotify_user"));
 };
 const setCurrentUser = user => {
-    localStorage.setItem("spotify_user", JSON.stringify({
-        "display_name": user.display_name,
-        "uri": user.uri,
-        "followers": user.followers,
-        "id": user.id,
-        "images": [
-            {
-                "url": user.images[0].url
-            }
-        ]
-    }));
+    localStorage.setItem("spotify_user", JSON.stringify(user));
 };
 
 const logOut = () => {

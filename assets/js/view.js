@@ -3,7 +3,7 @@
 const spotify = require("./apis/spotify");
 
 const populateUserInfo = () => {
-    let user = localStorage.getItem("spotify_user");
+    let user = JSON.parse(localStorage.getItem("spotify_user"));
     if (user) {
         let content = getUserCard(user);
         $("#personal").html(content);
