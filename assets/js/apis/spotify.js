@@ -10,8 +10,9 @@ const searchTracksTitle = (title, limit) => {
             headers: {
                 "Authorization": `Bearer ${token}`
             }
-        }).done(response => resolve(response))
-        .fail(response => reject(response));
+        })
+        .done(results => resolve(results))
+        .fail(error => reject(error));
     });
 };
 

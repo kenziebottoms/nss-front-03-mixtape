@@ -2,4 +2,4 @@
 
 const eventController = require("./events");
 
-eventController.activateButtons();
+eventController.activateListeners();

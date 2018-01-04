@@ -1,18 +1,26 @@
 "use strict";
 
-const spotify = require("./apis/spotify");
-const keys = require("./apis/api_keys");
 const view = require("./view_search");
+const spotify = require("./apis/spotify");
+const tmdb = require("./apis/tmdb");
 
-const activateButtons = () => {
+const activateListeners = () => {
     activateSearchButtons();
+    activateSpotifyAuthButton();
+    checkSpotifyAuth();
 };
 
 const activateSearchButtons = () => {
     activateBookSearchButton();
     activateMovieSearchButton();
     activateTVSearchButton();
-    initSpotifyAuth();
+};
+
+const activateSpotifyAuthButton = () => {
+    // "authorize spotify" button
+    $("button.spotify.unauthorized").click(event => {
+        spotify.authorize();
+    });
 };
 
 // ----- SEARCH BUTTONS ----- //
@@ -31,22 +39,19 @@ const activateBookSearchButton = () => {
 const activateSongSearchButton = () => {
     $("button.spotify.authorized").click(event => {
         let term = $("input.spotify.authorized").val();
-        spotify.searchTracksTitle(term, 5)
-            .then(response => {
-                view.formatSongSearchResults(response);
-            });
-            // .catch(reponse => {
-                // TODO catch an expired token, try again
-            // })
+        spotify.searchTracksTitle(term, 5).then(response => {
+            view.formatSongSearchResults(response);
+        });
+        // .catch(reponse => {
+            // TODO catch an expired token, try again
+        // })
     });
 };
 // the movie database
 const activateMovieSearchButton = () => {
     $("button.tmdb.movies").click(event => {
         let term = $("input.tmdb.movies").val();
-        $.ajax({
-            url: `https://api.themoviedb.org/3/search/movie?api_key=${keys.tmdb_public}&language=en-US&query=${encodeURI(term)}`
-        }).done(response => {
+        tmdb.searchMovieTitle(term).then(response => {
             view.formatMovieSearchResults(response);
         });
     });
@@ -55,20 +60,14 @@ const activateMovieSearchButton = () => {
 const activateTVSearchButton = () => {
     $("button.tmdb.tv").click(event => {
         let term = $("input.tmdb.tv").val();
-        $.ajax({
-            url: `https://api.themoviedb.org/3/search/tv?api_key=${keys.tmdb_public}&language=en-US&query=${encodeURI(term)}`
-        }).done(response => {
+        tmdb.searchTVTitle(term).then(response => {
             view.formatTVSearchResults(response);
         });
     });
 };
 
 // spotify auth flow
-const initSpotifyAuth = () => {
-    // "authorize spotify" button
-    $("button.spotify.unauthorized").click(event => {
-        spotify.authorize();
-    });
+const checkSpotifyAuth = () => {
     // populate correct spotify buttons
     let spotify_token = spotify.getAccessToken();
     if (spotify_token) {
@@ -83,4 +82,4 @@ const initSpotifyAuth = () => {
     }
 };
 
-module.exports = {activateButtons};
+module.exports = {activateListeners};

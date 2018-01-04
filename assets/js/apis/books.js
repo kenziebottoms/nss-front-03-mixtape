@@ -1,7 +1,5 @@
 "use strict";
 
-const keys = require("./api_keys");
-
 const searchTitle = title => {
     return new Promise((resolve, reject) => {
         $.ajax({
