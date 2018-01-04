@@ -1,13 +1,15 @@
 "use strict";
 
-const view = require("./view_search");
+const view = require("./view");
+const search = require("./view_search");
 const spotify = require("./apis/spotify");
 const tmdb = require("./apis/tmdb");
 
-const activateListeners = () => {
+const initialize = () => {
     activateSearchButtons();
     activateSpotifyAuthButton();
     checkSpotifyAuth();
+    view.populateUserInfo();
 };
 
 const activateSearchButtons = () => {
@@ -30,8 +32,8 @@ const activateBookSearchButton = () => {
     const books = require("./apis/books");
     $("button.books").click(event => {
         let term = $("input.books").val();
-        books.searchTitle(term).then(response => {
-            view.formatBookSearchResults(response);
+        books.searchTitle(term).then(results => {
+            search.formatBookSearchResults(results);
         });
     });
 };
@@ -39,8 +41,8 @@ const activateBookSearchButton = () => {
 const activateSongSearchButton = () => {
     $("button.spotify.authorized").click(event => {
         let term = $("input.spotify.authorized").val();
-        spotify.searchTracksTitle(term, 5).then(response => {
-            view.formatSongSearchResults(response);
+        spotify.searchTracksTitle(term, 5).then(results => {
+            search.formatSongSearchResults(results);
         });
         // .catch(reponse => {
             // TODO catch an expired token, try again
@@ -51,8 +53,8 @@ const activateSongSearchButton = () => {
 const activateMovieSearchButton = () => {
     $("button.tmdb.movies").click(event => {
         let term = $("input.tmdb.movies").val();
-        tmdb.searchMovieTitle(term).then(response => {
-            view.formatMovieSearchResults(response);
+        tmdb.searchMovieTitle(term).then(results => {
+            search.formatMovieSearchResults(results);
         });
     });
 };
@@ -60,8 +62,8 @@ const activateMovieSearchButton = () => {
 const activateTVSearchButton = () => {
     $("button.tmdb.tv").click(event => {
         let term = $("input.tmdb.tv").val();
-        tmdb.searchTVTitle(term).then(response => {
-            view.formatTVSearchResults(response);
+        tmdb.searchTVTitle(term).then(results => {
+            search.formatTVSearchResults(results);
         });
     });
 };
@@ -78,8 +80,9 @@ const checkSpotifyAuth = () => {
             activateSongSearchButton(spotify_token);
         }
     } else {
+        spotify.logOut();
         $(".spotify.unauthorized").removeClass("d-none");
     }
 };
 
-module.exports = {activateListeners};
+module.exports = {initialize};

@@ -9,6 +9,27 @@ button {
     cursor: pointer;
 }
 
+#personal {
+    display: flex;
+    .img {
+        max-width: 100px;
+        img {
+            max-width: 100%;
+            float: left;
+            padding-right: 1rem;
+        }
+    }
+    .card-body {
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        h6 {
+            margin-bottom: 0;
+        }
+    }
+}
+
 .search-result {
     margin: .5rem 0;
     display: flex;
