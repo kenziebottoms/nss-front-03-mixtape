@@ -1,7 +1,7 @@
 "use strict";
 
-const spotify = require("./spotify_auth");
-const keys = require("./api_keys");
+const spotify = require("./apis/spotify");
+const keys = require("./apis/api_keys");
 const view = require("./view_search");
 
 const activateButtons = () => {
@@ -19,27 +19,25 @@ const activateSearchButtons = () => {
 
 // google books
 const activateBookSearchButton = () => {
+    const books = require("./apis/books");
     $("button.books").click(event => {
         let term = $("input.books").val();
-        $.ajax({
-            url: `https://www.googleapis.com/books/v1/volumes?q=${encodeURI(term)}&maxResults=20`,
-        }).done(response => {
+        books.searchTitle(term).then(response => {
             view.formatBookSearchResults(response);
         });
     });
 };
 // spotify
-const activateSpotifySearchButton = token => {
+const activateSongSearchButton = () => {
     $("button.spotify.authorized").click(event => {
         let term = $("input.spotify.authorized").val();
-        $.ajax({
-            url: `https://api.spotify.com/v1/search?q=title:${encodeURI(term)}&type=track&limit=5`,
-            headers: {
-                "Authorization": `Bearer ${token}`
-            }
-        }).done(response => {
-            view.formatSongSearchResults(response);
-        });
+        spotify.searchTracksTitle(term, 5)
+            .then(response => {
+                view.formatSongSearchResults(response);
+            });
+            // .catch(reponse => {
+                // TODO catch an expired token, try again
+            // })
     });
 };
 // the movie database
@@ -67,9 +65,9 @@ const activateTVSearchButton = () => {
 
 // spotify auth flow
 const initSpotifyAuth = () => {
-    // authorize spotify button
+    // "authorize spotify" button
     $("button.spotify.unauthorized").click(event => {
-        window.location.href = `https://accounts.spotify.com/authorize?client_id=${keys.spotify_public}&redirect_uri=http:%2F%2Flocalhost:8080%2Fcallback.html&scope=user-top-read%20user-read-currently-playing&response_type=token`;
+        spotify.authorize();
     });
     // populate correct spotify buttons
     let spotify_token = spotify.getAccessToken();
@@ -78,7 +76,7 @@ const initSpotifyAuth = () => {
         if (window.location.href.toString().search("callback") > 0) {
             window.location.href = "http://localhost:8080";
         } else {
-            activateSpotifySearchButton(spotify_token);
+            activateSongSearchButton(spotify_token);
         }
     } else {
         $(".spotify.unauthorized").removeClass("d-none");

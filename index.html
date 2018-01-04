@@ -12,6 +12,10 @@
 <body>
     <div class="container my-3">
         <div class="row">
+            <h3>Personal Info</h3>
+            <div id="personal"></div>
+        </div>
+        <div class="row">
             <div class="col-12 col-md-6 col-lg-4 my-3">
                 <h3>Books</h3>
                 <div class="row my-3 px-3">
@@ -47,7 +51,20 @@
             </div>
         </div>
     </div>
-    <!-- Optional JavaScript -->
+    <!-- FireBase -->
+    <script src="https://www.gstatic.com/firebasejs/4.8.1/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyD4H78lA3VJNn_5GBpGHsr3rhxye3V_fSs",
+            authDomain: "fanmix-app.firebaseapp.com",
+            databaseURL: "https://fanmix-app.firebaseio.com",
+            projectId: "fanmix-app",
+            storageBucket: "",
+            messagingSenderId: "442246319188"
+        };
+        firebase.initializeApp(config);
+    </script>
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.3/umd/popper.min.js" integrity="sha384-vFJXuSJphROIrBnz7yo7oB41mKfc8JzQZiCq4NCceLEaO4IHwicKwpJf9c9IpFgh" crossorigin="anonymous"></script>
