@@ -6,9 +6,9 @@
 const formatTrackSearchResults = data => {
     let songs = data.tracks.items;
     if (songs.length > 0) {
-        $("#spotify-results").html("");
+        $("#song-results").html("");
         songs.forEach(song => {
-            $("#spotify-results").append(getTrackSearchCard(song));
+            $("#song-results").append(getTrackSearchCard(song));
         });
     }
 };
@@ -20,17 +20,17 @@ const getTrackSearchCard = song => {
             <h5 class="card-title">${song.name}</h5>
             <h6 class="card-subtitle text-muted">${song.artists[0].name}</h6>
         </div>
-    </div>`;
+    </song>`;
 };
 
 // ----- TMDb ----- //
 
 const formatMovieSearchResults = data => {
-    let movies = data.results.slice(0,5);
-    if (movies.length > 0) {
+    if (data.total_results > 0) {
         $("#tmdb-results").html("");
+        let movies = data.results.slice(0,5);
         movies.forEach(movie => {
-            $("#tmdb-results").append(getMovieSearchCard(movie));
+            $("#movie-results").append(getMovieSearchCard(movie));
         });
     }
 };
@@ -44,8 +44,35 @@ const getMovieSearchCard = movie => {
             <h5 class="card-title">${movie.title}</h5>
             <h6 class="card-subtitle text-muted">${movie.release_date.substr(0,4)}</h6>
         </div>
-    </div>`;
+    </movie>`;
     return card;
 };
 
-module.exports = {formatTrackSearchResults, formatMovieSearchResults};
+// ----- BOOKS ----- //
+
+const formatBookSearchResults = data => {
+    let books = data.items;
+    books.sort((a,b) => {
+        return b.volumeInfo.ratingsCount - a.volumeInfo.ratingsCount;
+    });
+    console.log(books);
+    $("#book-results").html("");
+    books.slice(0,5).forEach(book => {
+        $("#book-results").append(getBookSearchCard(book));
+    });
+};
+
+const getBookSearchCard = book => {
+    let card = `<book class="search-result" data-books-id="${book.id}">`;
+        if (book.volumeInfo.imageLinks.smallThumbnail != null) {
+            card += `<div class="img"><img class="card-img-left" src="${book.volumeInfo.imageLinks.smallThumbnail}"></div>`;
+        }
+        card += `<div class="card-body">
+            <h5 class="card-title">${book.volumeInfo.title}</h5>
+            <h6 class="card-subtitle text-muted">${book.volumeInfo.authors.join(", ")}</h6>
+        </div>
+    </book>`;
+    return card;
+};
+
+module.exports = {formatTrackSearchResults, formatMovieSearchResults, formatBookSearchResults};
