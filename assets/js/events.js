@@ -2,7 +2,7 @@
 
 const spotify = require("./spotify_auth");
 const keys = require("./api_keys");
-const view = require("./view");
+const view = require("./view_search");
 
 const activateButtons = () => {
     activateSearchButtons();
