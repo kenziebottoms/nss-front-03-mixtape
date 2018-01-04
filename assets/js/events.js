@@ -47,7 +47,7 @@ const activateMoveDatabaseSearchButton = () => {
     $("button.tmdb").click(event => {
         let term = $("input.tmdb").val();
         $.ajax({
-            url: `https://api.themoviedb.org/3/search/movie?api_key=d7208980a35f7aef364e81fcb05147a4&language=en-US&query=${encodeURI(term)}`
+            url: `https://api.themoviedb.org/3/search/movie?api_key=${keys.tmdb_public}&language=en-US&query=${encodeURI(term)}`
         }).done(response => {
             $("pre.tmdb").html(JSON.stringify(response));
             view.formatMovieSearchResults(response);

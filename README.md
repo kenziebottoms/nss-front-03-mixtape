@@ -2,7 +2,7 @@
 
 [MindMeister mind map](https://mm.tt/994144307?t=3TqRJrEdLy)
 
-Experimentation with the Spotify, TMDb, and Goodreads APIs.
+Experimentation with the Spotify, TMDb, and ~~Goodreads~~ Google Books APIs.
 
 ---
 
@@ -28,6 +28,7 @@ Experimentation with the Spotify, TMDb, and Goodreads APIs.
 
 - [API docs](https://developers.google.com/books/docs/v1/reference/)
 - [Getting started](https://developers.google.com/books/docs/v1/getting_started)
+- [In-depth book search](https://developers.google.com/books/docs/v1/reference/volumes/list)
 
 ### ~~Goodreads~~
 
