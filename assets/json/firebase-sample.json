@@ -29,21 +29,21 @@
     "links": {
         "tracks": [
             {
-                "id": "54bO9jrn1NExmpg6Afsc2A",
+                "id": 0,
+                "track_id": "54bO9jrn1NExmpg6Afsc2A",
                 "tags": [
                     "Will Byers"
                 ],
-                "media_type": "tv_shows",
-                "media_id": 66732,
+                "media": "tv_shows:66732",
                 "added": 1514844644
             },
             {
-                "id": "2W7DkWXBgqLQmlCBIxeqVe",
+                "id": 1,
+                "track_id": "2W7DkWXBgqLQmlCBIxeqVe",
                 "tags": [
                     "Will Byers"
                 ],
-                "media_type": "tv_shows",
-                "media_id": 66732,
+                "media": "tv_shows:66732",
                 "added": 1514844624
             }
         ],

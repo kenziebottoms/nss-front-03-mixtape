@@ -27,13 +27,33 @@ const getSongs = () => {
 };
 
 const getRecentTrackLinks = () => {
+    getRawTrackLinks().then(links => {
+        // get list of media items to query
+        let media = [];
+        let tracks = [];
+        links.forEach(link => {
+            media.push(link.media);
+            tracks.push(link.track_id);
+        });
+        let uniqueMedia = media.filter(unique);
+        let uniqueTracks = tracks.filter(unique);
+
+        console.log(uniqueMedia, uniqueTracks);
+    });
+};
+
+const getRawTrackLinks = () => {
     return new Promise((resolve, reject) => {
         $.ajax({
             url: `${db}/links/tracks.json`
         })
-        .done(response => resolve(response))
+        .done(links => resolve(links))
         .fail(error => reject(error));
     });
+};
+
+const unique = (element, index, array) => {
+    return array.indexOf(element) === index;
 };
 
 module.exports = {init, getSongs, getRecentTrackLinks};
