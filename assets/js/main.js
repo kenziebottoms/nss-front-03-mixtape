@@ -4,5 +4,5 @@ const eventController = require("./events");
 const firebase = require("./apis/firebase");
 
 eventController.initialize();
-firebase.getRecentLinks()
+firebase.getRecentTrackLinks()
 .then(response => console.log(response));

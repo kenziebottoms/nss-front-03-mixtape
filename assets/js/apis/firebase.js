@@ -36,4 +36,4 @@ const getRecentTrackLinks = () => {
     });
 };
 
-module.exports = {init, getSongs, getRecentLinks};
+module.exports = {init, getSongs, getRecentTrackLinks};
