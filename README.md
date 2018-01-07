@@ -20,6 +20,8 @@ Experimentation with the Spotify, TMDb, and ~~Goodreads~~ Google Books APIs.
 
 ### Firebase
 
+- [ ] Solidify database structure.
+- [ ] Pull recent links from database.
 - [ ] Store Spotify user data in Firebase.
 - [ ] Allow user to favorite music or media.
 - [ ] Display information relevant to user's favorite music/media.
@@ -27,6 +29,10 @@ Experimentation with the Spotify, TMDb, and ~~Goodreads~~ Google Books APIs.
 ---
 
 ## Resources
+
+### Firebase
+
+- [Retrieving data by REST API](https://firebase.google.com/docs/database/rest/retrieve-data)
 
 ### Spotify
 
