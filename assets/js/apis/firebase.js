@@ -40,21 +40,31 @@ const getRecentTrackLinks = () => {
             tracks.push(links[key].track_id);
         });
         // filter for uniqueness
-        let uniqueMedia = media.filter(unique);
-        let uniqueTracks = tracks.filter(unique);
-        // return all media info
-        return getMediaQueue(uniqueMedia);
-    }).then(mediaQueue => {
-        console.log(mediaQueue);
+        media = _.uniq(media);
+        tracks = _.uniq(tracks);
+        // return all media info and map it out
+        getMediaQueue(media).then(mediaQueue => {
+            mediaQueue.forEach(media => {
+                media = _.sample(media);
+                _.forEach(links, link => {
+                    if (link.media == `${media.type}:${media.id}`) {
+                        link.media = media;
+                    }
+                });
+            });
+            return links;
+        });
     });
 };
 
 const getMediaById = (type, id) => {
     return new Promise((resolve, reject) => {
         $.ajax({
-            url: `${db}/${type}.json?id=${id}`
+            url: `${db}/media.json?id=${id}&type=${type}`
         })
-        .done(response => resolve(response))
+        .done(response => {
+            resolve(response);
+        })
         .fail(error => reject(error));
     });
 };
@@ -64,7 +74,8 @@ const getSongById = id => {
         $.ajax({
             url: `${db}/songs.json?id=${id}`
         })
-        .done(response => resolve(response))
+        // sample basically flattens the object
+        .done(response => resolve(_.sample(response)))
         .fail(error => reject(error));
     });
 };
