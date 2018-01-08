@@ -1,22 +1,22 @@
 {
     "links": {
-        "tracks": {
-            "-L2LfPQe-2xa5R5htl2L": {
-                "added": 1514844644,
-                "media": "tv_shows:66732",
-                "tags": [
-                    "Will Byers"
-                ],
-                "track_id": "54bO9jrn1NExmpg6Afsc2A"
-            },
-            "-L2LfU1aSh_A-LD9_Ckw": {
-                "added": 1514844624,
-                "media": "tv_shows:66732",
-                "tags": [
-                    "Will Byers"
-                ],
-                "track_id": "2W7DkWXBgqLQmlCBIxeqVe"
-            }
+        "-L2MA3roxuqzTDh1Q1nX": {
+            "added": 1514844644,
+            "media": "tv_shows:66732",
+            "tags": [
+                "Will Byers"
+            ],
+            "track_id": "54bO9jrn1NExmpg6Afsc2A",
+            "type": "track"
+        },
+        "-L2MAB2N0fAd1o-XO-Ei": {
+            "added": 1514844624,
+            "media": "tv_shows:66732",
+            "tags": [
+                "Will Byers"
+            ],
+            "track_id": "2W7DkWXBgqLQmlCBIxeqVe",
+            "type": "track"
         }
     },
     "songs": {
