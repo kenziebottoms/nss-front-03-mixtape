@@ -8,9 +8,13 @@ const populateUserInfo = () => {
         let content = getUserCard(user);
         $("#personal").html(content);
     } else {
-        spotify.getUserInfo().then(user => {
-            $("#personal").html(getUserCard(user));
-        });
+        if (spotify.getAccessToken()) {
+            spotify.getUserInfo().then(user => {
+                $("#personal").html(getUserCard(user));
+            });
+        } else {
+            spotify.logOut();
+        }
     }
 };
 

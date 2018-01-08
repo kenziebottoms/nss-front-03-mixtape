@@ -31,9 +31,9 @@ const getRecentTrackLinks = () => {
         // get list of media items to query
         let media = [];
         let tracks = [];
-        links.forEach(link => {
-            media.push(link.media);
-            tracks.push(link.track_id);
+        Object.keys(links).forEach(key => {
+            media.push(links[key].media);
+            tracks.push(links[key].track_id);
         });
         let uniqueMedia = media.filter(unique);
         let uniqueTracks = tracks.filter(unique);
