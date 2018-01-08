@@ -19,7 +19,7 @@
             "type": "track"
         }
     },
-    "songs": {
+    "tracks": {
         "-L2Le_guuvb1KsOWEndw": {
             "album": "Language & Perspective",
             "album_cover": "https://i.scdn.co/image/2ed6f4a26d7e6ec311901d8694ed18b4097d3866",
@@ -37,13 +37,14 @@
             "title": "Hello Hurricane"
         }
     },
-    "tv_shows": {
+    "media": {
         "-L2LfilnPATBgRlQ_mta": {
             "air_date": "2016-07-15",
             "id": 66732,
             "last_cached": 1514844644,
             "poster": "/lXS60geme1LlEob5Wgvj3KilClA.jpg",
-            "title": "Stranger Things"
+            "title": "Stranger Things",
+            "type": "tv_shows"
         }
     }
 }
