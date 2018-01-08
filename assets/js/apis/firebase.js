@@ -26,6 +26,7 @@ const getSongs = () => {
     });
 };
 
+// currently gets all track links
 const getRecentTrackLinks = () => {
     getRawTrackLinks().then(links => {
         // get list of media items to query
@@ -38,7 +39,25 @@ const getRecentTrackLinks = () => {
         let uniqueMedia = media.filter(unique);
         let uniqueTracks = tracks.filter(unique);
 
-        console.log(uniqueMedia, uniqueTracks);
+        let mediaObjs = [];
+        uniqueMedia.forEach(media => {
+            let type = media.split(":")[0];
+            let id = media.split(":")[1];
+            getMediaById(type, id).then(response => {
+                mediaObjs.push(response);
+                console.log(mediaObjs);
+            });
+        });
+    });
+};
+
+const getMediaById = (type, id) => {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: `${db}/${type}.json?id=${id}`
+        })
+        .done(response => resolve(response))
+        .fail(error => reject(error));
     });
 };
 
