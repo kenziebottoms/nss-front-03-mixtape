@@ -1,52 +1,49 @@
 {
-    "songs": [
-        {
-            "id": "54bO9jrn1NExmpg6Afsc2A",
-            "title": "Salt",
-            "artist": "Bad Suns",
-            "album_cover": "https://i.scdn.co/image/2ed6f4a26d7e6ec311901d8694ed18b4097d3866",
-            "album": "Language & Perspective",
-            "last_cached": 1515103391
-        },
-        {
-            "id": "2W7DkWXBgqLQmlCBIxeqVe",
-            "title": "Hello Hurricane",
-            "artist": "Switchfoot",
-            "album_cover": "https://i.scdn.co/image/8540b06aa75795f704165699b9f86040d8fc064f",
-            "album": "Hello Hurricane",
-            "last_cached": 1515103391
-        }
-    ],
-    "tv_shows": [
-        {
-            "id": 66732,
-            "title": "Stranger Things",
-            "air_date": "2016-07-15",
-            "post": "/lXS60geme1LlEob5Wgvj3KilClA.jpg",
-            "last_cached": 1514844644
-        }
-    ],
     "links": {
-        "tracks": [
-            {
-                "id": 0,
-                "track_id": "54bO9jrn1NExmpg6Afsc2A",
+        "tracks": {
+            "-L2LfPQe-2xa5R5htl2L": {
+                "added": 1514844644,
+                "media": "tv_shows:66732",
                 "tags": [
                     "Will Byers"
                 ],
-                "media": "tv_shows:66732",
-                "added": 1514844644
+                "track_id": "54bO9jrn1NExmpg6Afsc2A"
             },
-            {
-                "id": 1,
-                "track_id": "2W7DkWXBgqLQmlCBIxeqVe",
+            "-L2LfU1aSh_A-LD9_Ckw": {
+                "added": 1514844624,
+                "media": "tv_shows:66732",
                 "tags": [
                     "Will Byers"
                 ],
-                "media": "tv_shows:66732",
-                "added": 1514844624
+                "track_id": "2W7DkWXBgqLQmlCBIxeqVe"
             }
-        ],
-        "playlists": []
+        }
+    },
+    "songs": {
+        "-L2Le_guuvb1KsOWEndw": {
+            "album": "Language & Perspective",
+            "album_cover": "https://i.scdn.co/image/2ed6f4a26d7e6ec311901d8694ed18b4097d3866",
+            "artist": "Bad Suns",
+            "id": "54bO9jrn1NExmpg6Afsc2A",
+            "last_cached": 1515103391,
+            "title": "Salt"
+        },
+        "-L2Lf3pDHJRsWt1sm6uH": {
+            "album": "Hello Hurricane",
+            "album_cover": "https://i.scdn.co/image/8540b06aa75795f704165699b9f86040d8fc064f",
+            "artist": "Switchfoot",
+            "id": "2W7DkWXBgqLQmlCBIxeqVe",
+            "last_cached": 1515103391,
+            "title": "Hello Hurricane"
+        }
+    },
+    "tv_shows": {
+        "-L2LfilnPATBgRlQ_mta": {
+            "air_date": "2016-07-15",
+            "id": 66732,
+            "last_cached": 1514844644,
+            "poster": "/lXS60geme1LlEob5Wgvj3KilClA.jpg",
+            "title": "Stranger Things"
+        }
     }
 }
