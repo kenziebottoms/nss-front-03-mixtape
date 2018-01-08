@@ -42,19 +42,49 @@ const getRecentTrackLinks = () => {
         // filter for uniqueness
         media = _.uniq(media);
         tracks = _.uniq(tracks);
-        // return all media info and map it out
-        getMediaQueue(media).then(mediaQueue => {
-            mediaQueue.forEach(media => {
-                media = _.sample(media);
-                _.forEach(links, link => {
-                    if (link.media == `${media.type}:${media.id}`) {
-                        link.media = media;
-                    }
-                });
-            });
-            return links;
+        mapLinkMedia(media, links).then(results => {
+            return mapLinkTracks(tracks, links).then(results => console.log(results));
         });
     });
+};
+
+const mapLinkMedia = (media, links) => {
+    return new Promise((resolve, reject) => {
+        getMediaQueue(media).then(mediaQueue => {
+            resolve(mapMedia(links, mediaQueue));
+        });
+    });
+};
+
+const mapLinkTracks = (tracks, links) => {
+    return new Promise((resolve, reject) => {
+        getTrackQueue(tracks).then(trackQueue => {
+            resolve(mapTracks(links, trackQueue));
+        });
+    });
+};
+
+const mapMedia = (linkList, mediaList) => {
+    mediaList.forEach(media => {
+        media = _.sample(media);
+        _.forEach(linkList, link => {
+            if (link.media == `${media.type}:${media.id}`) {
+                link.media = media;
+            }
+        });
+    });
+    return linkList;
+};
+
+const mapTracks = (linkList, trackList) => {
+    trackList.forEach(track => {
+        _.forEach(linkList, link => {
+            if (link.track == track.id) {
+                link.track = track;
+            }
+        });
+    });
+    return linkList;
 };
 
 const getMediaById = (type, id) => {
@@ -72,7 +102,7 @@ const getMediaById = (type, id) => {
 const getSongById = id => {
     return new Promise((resolve, reject) => {
         $.ajax({
-            url: `${db}/songs.json?id=${id}`
+            url: `${db}/tracks.json?id=${id}`
         })
         // sample basically flattens the object
         .done(response => resolve(_.sample(response)))
@@ -90,10 +120,7 @@ const getMediaQueue = queue => {
 };
 
 const getTrackQueue = queue => {
-    let promiseArray = queue.map((value, index, array) => {
-        let id = value;
-        return getSongById(id);
-    });
+    let promiseArray = queue.map(id => getSongById(id));
     return Promise.all(promiseArray);
 };
 
