@@ -1,6 +1,6 @@
 "use strict";
 
-const keys = require("./api_keys");
+const keys = require("./keys");
 
 const searchMovieTitle = title => {
     return new Promise((resolve, reject) => {

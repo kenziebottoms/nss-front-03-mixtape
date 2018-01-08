@@ -1,6 +1,6 @@
 "use strict";
 
-const keys = require("./api_keys");
+const keys = require("./keys");
 
 const searchTracksTitle = (title, limit) => {
     return new Promise((resolve, reject) => {

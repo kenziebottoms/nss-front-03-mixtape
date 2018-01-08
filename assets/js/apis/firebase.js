@@ -4,7 +4,7 @@ const firebase = require("firebase");
 
 const db = "https://fanmix-app.firebaseio.com";
 const app = "fanmix-app.firebaseapp.com";
-const keys = require("./api_keys");
+const keys = require("./keys");
 
 const init = () => {
     var config = {
