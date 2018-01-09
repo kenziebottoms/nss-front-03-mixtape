@@ -3,3 +3,4 @@
 assets/css
 dist/
 assets/js/api_keys.js
+assets/firebase/creds.js

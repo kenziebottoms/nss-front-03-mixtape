@@ -5,4 +5,6 @@ module.exports.spotify_private = "80f8276cd4304917bb153cc2f42a352c";
 
 module.exports.tmdb_public = "d7208980a35f7aef364e81fcb05147a4";
 
-module.exports.firebase = "AIzaSyD4H78lA3VJNn_5GBpGHsr3rhxye3V_fSs";
+module.exports.firebase_db = "https://fanmix-app.firebaseio.com";
+module.exports.firebase_app = "fanmix-app.firebaseapp.com";
+module.exports.firebase_key = "AIzaSyD4H78lA3VJNn_5GBpGHsr3rhxye3V_fSs";
