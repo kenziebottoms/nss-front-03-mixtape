@@ -12,6 +12,8 @@ linker.getTrackLinks().then(links => {
         return linker.loadLink(link);
     });
     Promise.all(linkPromises).then(loadedLinks => {
-        $("#firebase").html(view.getTrackLinkCard(loadedLinks[0]));
+        loadedLinks.forEach(link => {
+            $("#firebase").append(view.getTrackLinkCard(link));
+        });
     });
 });

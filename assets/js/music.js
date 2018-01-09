@@ -35,7 +35,6 @@ const loadLink = link => {
     return new Promise((resolve, reject) => {
         getCachedMusic(link.music).then(music => {
             let newLink = Object.assign({}, link);
-            console.log(music);
             newLink.music = music;
             resolve(newLink);
         });

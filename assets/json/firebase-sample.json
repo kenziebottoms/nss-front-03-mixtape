@@ -2,7 +2,7 @@
     "links": {
         "-L2MA3roxuqzTDh1Q1nX": {
             "added": 1514844644,
-            "media": "tv_shows:66732",
+            "media": "tv:66732",
             "music": "track:54bO9jrn1NExmpg6Afsc2A",
             "tags": [
                 "Will Byers"
@@ -10,7 +10,7 @@
         },
         "-L2MAB2N0fAd1o-XO-Ei": {
             "added": 1514844624,
-            "media": "tv_shows:66732",
+            "media": "tv:66732",
             "music": "track:2W7DkWXBgqLQmlCBIxeqVe",
             "tags": [
                 "Will Byers"
@@ -18,13 +18,13 @@
         }
     },
     "media": {
-        "tv_shows:66732": {
-            "air_date": "2016-07-15",
+        "tv:66732": {
+            "date": "2016-07-15",
             "id": 66732,
             "last_cached": 1514844644,
-            "poster": "/lXS60geme1LlEob5Wgvj3KilClA.jpg",
+            "image": "/lXS60geme1LlEob5Wgvj3KilClA.jpg",
             "title": "Stranger Things",
-            "type": "tv_shows"
+            "type": "tv"
         }
     },
     "tracks": {

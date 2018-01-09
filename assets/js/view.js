@@ -23,6 +23,9 @@ const getUserCard = user => {
 };
 
 const getTrackLinkCard = loadedLink => {
+    if (loadedLink.media.type == "tv") {
+        loadedLink.media.image = "https://image.tmdb.org/t/p/w400_and_h600_bestv2" + loadedLink.media.image;
+    }
     const cardTemplate = require("../templates/track-link-card.hbs");
     return cardTemplate({"link": loadedLink});
 };
