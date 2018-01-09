@@ -2,6 +2,8 @@
 
 const keys = require("./apis/keys");
 const _ = require("lodash/fp");
+const media = require("./media");
+const music = require("./music");
 
 const getTrackLinks = () => {
     return new Promise((resolve, reject) => {
@@ -13,7 +15,7 @@ const getTrackLinks = () => {
     });
 };
 
-// links [] => media [], tracks []
+// links => media, tracks
 const splitLinks = links => {
     let media = [];
     let tracks = [];
@@ -28,4 +30,13 @@ const splitLinks = links => {
     return {media, tracks};
 };
 
-module.exports = {getTrackLinks};
+// replaces music and media references with objects
+const loadLink = link => {
+    return new Promise((resolve, reject) => {
+        media.loadLink(link).then(loadedLink => {
+            resolve(music.loadLink(loadedLink));
+        });
+    });
+};
+
+module.exports = {getTrackLinks, loadLink};

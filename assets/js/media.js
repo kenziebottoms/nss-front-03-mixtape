@@ -2,7 +2,7 @@
 
 const keys = require("./apis/keys");
 
-const getMediaById = (type, id) => {
+const getCachedMedia = (type, id) => {
     return new Promise((resolve, reject) => {
         $.ajax({
             url: `${keys.firebase_db}/media.json?id=${id}&type=${type}`
@@ -12,13 +12,21 @@ const getMediaById = (type, id) => {
     });
 };
 
-const getMediaListByIds = ids => {
-    let promiseArray = ids.map((value, index, array) => {
-        let type = value.split(":")[0];
-        let id = value.split(":")[1];
-        return getMediaById(type, id);
+const getCachedMediaList = typeIds => {
+    let promiseArray = typeIds.map(typeId => {
+        return getCachedMedia(typeId);
     });
     return Promise.all(promiseArray);
 };
 
-module.exports = {getMediaById, getMediaListByIds};
+const loadLink = link => {
+    return new Promise((resolve, reject) => {
+        getCachedMedia(link.media).then(media => {
+            let newLink = Object.assign({}, link);
+            newLink.media = media;
+            resolve(newLink);
+        });
+    });
+};
+
+module.exports = {getCachedMediaList, getCachedMedia, loadLink};
