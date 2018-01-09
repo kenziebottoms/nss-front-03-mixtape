@@ -30,4 +30,7 @@ const getTrackLinkCard = loadedLink => {
     return cardTemplate({"link": loadedLink});
 };
 
-module.exports = {populateUserInfo, getTrackLinkCard};
+const blockifyLinkCards = () => {
+};
+
+module.exports = {populateUserInfo, getTrackLinkCard, blockifyLinkCards};

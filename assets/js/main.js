@@ -15,5 +15,6 @@ linker.getTrackLinks().then(links => {
         loadedLinks.forEach(link => {
             $("#firebase").append(view.getTrackLinkCard(link));
         });
+        view.blockifyLinkCards();
     });
 });

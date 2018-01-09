@@ -58,13 +58,9 @@ img {
     display: flex;
     flex-direction: column;
     .card-images {
-        display: flex;
-        > div {
-            flex-basis: 50%;
-            img {
-                height: auto;
-                width: auto;
-            }
+        img {
+            height: auto;
+            width: auto;
         }
     }
 }
