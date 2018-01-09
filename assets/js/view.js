@@ -24,7 +24,7 @@ const getUserCard = user => {
 
 const getTrackLinkCard = loadedLink => {
     const cardTemplate = require("../templates/track-link-card.hbs");
-    return cardTemplate({loadedLink});
+    return cardTemplate({"link": loadedLink});
 };
 
-module.exports = {populateUserInfo};
+module.exports = {populateUserInfo, getTrackLinkCard};

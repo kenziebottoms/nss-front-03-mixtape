@@ -2,10 +2,10 @@
 
 const keys = require("./apis/keys");
 
-const getCachedMedia = (type, id) => {
+const getCachedMedia = (typeId) => {
     return new Promise((resolve, reject) => {
         $.ajax({
-            url: `${keys.firebase_db}/media.json?id=${id}&type=${type}`
+            url: `${keys.firebase_db}/media/${typeId}.json`
         })
         .done(response => resolve(response))
         .fail(error => reject(error));

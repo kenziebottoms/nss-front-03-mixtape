@@ -17,7 +17,7 @@ const getCachedMusic = typeId => {
     let id = typeId.split(":")[1];
     return new Promise((resolve, reject) => {
         $.ajax({
-            url: `${keys.firebase_db}/tracks.json?id=${id}&type=${type}`
+            url: `${keys.firebase_db}/tracks/${id}.json`
         })
         // sample basically flattens the object
         .done(response => resolve(response))
@@ -35,6 +35,7 @@ const loadLink = link => {
     return new Promise((resolve, reject) => {
         getCachedMusic(link.music).then(music => {
             let newLink = Object.assign({}, link);
+            console.log(music);
             newLink.music = music;
             resolve(newLink);
         });
