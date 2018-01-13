@@ -1,7 +1,7 @@
-<div class="link-card col-6 col-md-4">
+<div class="link-card col-6 col-md-4" id="{{link.id}}">
     <div class="card-images">
-        <img class="media" src="{{{link.media.image}}}">
-        <img class="music" src="{{{link.music.album_cover}}}">
+        <img class="media" height="75" width="auto" src="{{{link.media.image}}}">
+        <img class="music" height="75" width="auto" src="{{{link.music.album_cover}}}">
     </div>
     <div class="tags">
         {{#each tags}}

@@ -31,6 +31,28 @@ const getTrackLinkCard = loadedLink => {
 };
 
 const blockifyLinkCards = () => {
+    let $cards = $(".card-images");
+    [...$cards].forEach(card => {
+        let $card = $(card);
+        let music = $card.find("img.music");
+        let media = $card.find("img.media");
+        if (music.width() != 0 && music.height() != 0) {
+            let fullWidth = music.width() + media.width();
+            let $parent = $card.parent();
+            let parentPadding = parseInt($parent.css("padding-left")) +
+                                parseInt($parent.css("padding-right"));
+            let parentWidth = $parent.width() - parentPadding;
+            let ratio = parseFloat(parentWidth/fullWidth);
+            media.width(media.width()*ratio);
+            media.height(media.height()*ratio);
+            music.width(music.width()*ratio);
+            music.height(music.height()*ratio);
+        } else {
+            setTimeout(() => {
+                blockifyLinkCards();
+            }, 100);
+        }
+    });
 };
 
 module.exports = {populateUserInfo, getTrackLinkCard, blockifyLinkCards};

@@ -55,12 +55,7 @@ img {
 }
 
 .link-card {
-    display: flex;
-    flex-direction: column;
     .card-images {
-        img {
-            height: auto;
-            width: auto;
-        }
+        display: flex;
     }
 }
