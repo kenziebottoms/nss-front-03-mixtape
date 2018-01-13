@@ -36,7 +36,7 @@ const blockifyLinkCards = () => {
         let $card = $(card);
         let music = $card.find("img.music");
         let media = $card.find("img.media");
-        if (music.width() != 0 && music.height() != 0) {
+        if (music.width() != 0 && media.width() != 0) {
             let fullWidth = music.width() + media.width();
             let $parent = $card.parent();
             let parentPadding = parseInt($parent.css("padding-left")) +
@@ -47,10 +47,12 @@ const blockifyLinkCards = () => {
             media.height(media.height()*ratio);
             music.width(music.width()*ratio);
             music.height(music.height()*ratio);
+            music.css("opacity", 1.0);
+            media.css("opacity", 1.0);
         } else {
             setTimeout(() => {
                 blockifyLinkCards();
-            }, 100);
+            }, 50);
         }
     });
 };

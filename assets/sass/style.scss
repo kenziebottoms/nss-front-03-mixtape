@@ -55,7 +55,23 @@ img {
 }
 
 .link-card {
+    background: #fff;
     .card-images {
         display: flex;
+        img {
+            opacity: 0;
+            transition: opacity .2s;
+        }
+    }
+    .tags {
+        margin: .5rem 0;
+        .tag {
+            display: inline-block;
+            font-size: .8rem;
+            color: #666;
+            padding: .3rem .5rem;
+            border-radius: 3px;
+            border: 1px solid #ccc;
+        }
     }
 }

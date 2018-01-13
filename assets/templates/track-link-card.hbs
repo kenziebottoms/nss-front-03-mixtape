@@ -4,8 +4,8 @@
         <img class="music" height="75" width="auto" src="{{{link.music.album_cover}}}">
     </div>
     <div class="tags">
-        {{#each tags}}
-            #{{this}}
+        {{#each link.tags}}
+            <span class="tag">{{this}}</span>
         {{/each}}
     </div>
 </div>
