@@ -1,10 +1,11 @@
-<div class="img" data-uri="{{user.uri}}">
-    <img src="{{user.images.0.url}}">
-</div>
-<div class="card-body">
-    <span class="text-muted">You are logged in as:</span>
-    <h5>
-        {{user.display_name}}
-        <span class="badge badge-success">{{user.followers.total}}</span>
-    </h5>
+<div id="user" class="mb-4" data-uri="{{{user.uri}}}">
+    <div class="img">
+        <img src="{{user.images.0.url}}">
+    </div>
+    <div class="card-body">
+        <h6>
+            {{user.id}}
+            <span class="badge badge-success">{{user.followers.total}}</span>
+        </h6>
+    </div>
 </div>

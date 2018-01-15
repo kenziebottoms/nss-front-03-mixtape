@@ -13,14 +13,13 @@ img {
     max-height: 100%;
 }
 
-#personal {
+#user {
     display: flex;
     .img {
-        max-width: 100px;
+        width: 50px;
         img {
             max-width: 100%;
-            float: left;
-            padding-right: 1rem;
+            padding-right: .5rem;
         }
     }
     .card-body {
@@ -30,7 +29,11 @@ img {
         flex-direction: column;
         h6 {
             margin-bottom: 0;
+            font-size: 1.1rem;
         }
+    }
+    .badge {
+        font-size: 1rem;
     }
 }
 

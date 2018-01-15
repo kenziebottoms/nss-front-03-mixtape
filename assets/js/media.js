@@ -12,13 +12,6 @@ const getCachedMedia = (typeId) => {
     });
 };
 
-const getCachedMediaList = typeIds => {
-    let promiseArray = typeIds.map(typeId => {
-        return getCachedMedia(typeId);
-    });
-    return Promise.all(promiseArray);
-};
-
 const loadLink = link => {
     return new Promise((resolve, reject) => {
         getCachedMedia(link.media).then(media => {
@@ -29,4 +22,4 @@ const loadLink = link => {
     });
 };
 
-module.exports = {getCachedMediaList, getCachedMedia, loadLink};
+module.exports = {getCachedMedia, loadLink};
