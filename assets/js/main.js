@@ -8,5 +8,6 @@ const view = require("./view");
 const _ = require("lodash");
 
 linker.getTrackLinks().then(links => {
-    
+    links = _.values(links);
+    let media = _.mapKeys(links, link => link.media);
 });

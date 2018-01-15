@@ -1,0 +1,11 @@
+<show class="search-result" data-tmdb-id="{{show.id}}">
+    {{#if show.poster_path}}
+        <div class="img">
+            <img height="64" width="auto" class="card-img-left" src="https://image.tmdb.org/t/p/w400_and_h600_bestv2{{{show.poster_path}}}">
+        </div>
+    {{/if}}
+    <div class="card-body">
+        <h5 class="card-title">{{show.name}}</h5>
+        <h6 class="card-subtitle text-muted">{{show.first_air_date.substr(0,4)}}</h6>
+    </div>
+</show>
