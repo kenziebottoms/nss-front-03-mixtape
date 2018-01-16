@@ -1,6 +1,7 @@
 "use strict";
 
 const keys = require("./keys");
+const events = require("../events");
 
 const searchTracksTitle = (title, limit) => {
     return new Promise((resolve, reject) => {
@@ -12,7 +13,38 @@ const searchTracksTitle = (title, limit) => {
             }
         })
         .done(results => resolve(results))
-        .fail(error => reject(error));
+        .fail(error => {
+            handleAPIErrors(error);
+            reject(error);
+        });
+    });
+};
+
+const getNowPlaying = () => {
+    return new Promise((resolve, reject) => {
+        let token = getAccessToken();
+        if (token) {
+            $.ajax({
+                url: `https://api.spotify.com/v1/me/player/currently-playing`,
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            })
+            .done(results => resolve(results))
+            .fail(error => {
+                handleAPIErrors(error);
+                reject(error);
+            });
+        } else {
+            reject("No token");
+        }
+    });
+};
+
+const printNowPlaying = () => {
+    getNowPlaying().then(nowPlaying => {
+        const template = require("../../templates/now-playing.hbs");
+        $("#nowPlaying").append(template({nowPlaying}));
     });
 };
 
@@ -29,7 +61,10 @@ const getUserInfo = () => {
             setCurrentUser(user);
             resolve(user);
         })
-        .fail(error => reject(error));
+        .fail(error => {
+            handleAPIErrors(error);
+            reject(error);
+        });
     });
 };
 
@@ -45,7 +80,7 @@ const getAccessToken = () => {
                 return token;
             }
         } else {
-            return false;
+            logOut();
         }
     }
     return token;
@@ -62,6 +97,12 @@ const setLocalToken = token => {
     localStorage.setItem("spotify_token", token);
 };
 
+const handleAPIErrors = error => {
+    if (error.statusText == "Unauthorized") {
+        logOut();
+    }
+};
+
 const authorize = () => {
     window.location.href = `https://accounts.spotify.com/authorize?client_id=${keys.spotify_public}&redirect_uri=http:%2F%2Flocalhost:8080%2Fcallback.html&scope=user-top-read%20user-read-currently-playing&response_type=token`;
 };
@@ -76,6 +117,7 @@ const setCurrentUser = user => {
 const logOut = () => {
     localStorage.removeItem("spotify_user");
     localStorage.removeItem("spotify_token");
+    $(".spotify.unauthorized").removeClass("d-none");
 };
 
-module.exports = {getAccessToken, authorize, searchTracksTitle, getUserInfo, logOut};
+module.exports = {getAccessToken, authorize, searchTracksTitle, getUserInfo, logOut, getNowPlaying, printNowPlaying};

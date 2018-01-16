@@ -33,4 +33,4 @@ const checkSpotifyAuth = () => {
     }
 };
 
-module.exports = {initialize};
+module.exports = {initialize, checkSpotifyAuth};
