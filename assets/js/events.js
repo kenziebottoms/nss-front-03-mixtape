@@ -89,7 +89,9 @@ const checkSpotifyAuth = () => {
 
 const activateLogInButton = () => {
     $("#google-auth").on("click", event => {
-        users.authUser();
+        users.authUser().then(user => {
+            console.log(user);
+        });
     });
 };
 
