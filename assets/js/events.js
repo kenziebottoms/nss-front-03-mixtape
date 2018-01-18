@@ -4,12 +4,14 @@ const view = require("./view");
 const search = require("./view_search");
 const spotify = require("./apis/spotify");
 const tmdb = require("./apis/tmdb");
+const users = require("./users");
 
 const initialize = () => {
     activateSearchButtons();
     activateSpotifyAuthButton();
     checkSpotifyAuth();
     view.populateUserInfo();
+    activateLogInButton();
 };
 
 const activateSearchButtons = () => {
@@ -83,6 +85,12 @@ const checkSpotifyAuth = () => {
         spotify.logOut();
         $(".spotify.unauthorized").removeClass("d-none");
     }
+};
+
+const activateLogInButton = () => {
+    $("#google-auth").on("click", event => {
+        users.authUser();
+    });
 };
 
 module.exports = {initialize};
