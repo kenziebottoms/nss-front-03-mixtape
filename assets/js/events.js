@@ -12,6 +12,7 @@ const initialize = () => {
     checkSpotifyAuth();
     view.populateUserInfo();
     activateLogInButton();
+    users.listenForActiveUser();
 };
 
 const activateSearchButtons = () => {
@@ -90,7 +91,6 @@ const checkSpotifyAuth = () => {
 const activateLogInButton = () => {
     $("#google-auth").on("click", event => {
         users.authUser().then(user => {
-            console.log(user);
         });
     });
 };

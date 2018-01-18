@@ -20,8 +20,28 @@ const authUser = () => {
 
 const setActiveUser = user => {
     activeUser = user;
+    $("#google-auth").hide();
 };
 
-const getActiveUser = () => activeUser;
+const getActiveUser = () => {
+    if (activeUser) {
+        return activeUser;
+    } else {
+        const firebase = require("./apis/firebase");
+        let user = firebase.auth().currentUser;
+        if (user) {
+            setActiveUser(user);
+        }
+        return activeUser;
+    }
+};
 
-module.exports = {authUser};
+const listenForActiveUser = () => {
+    firebase.auth().onAuthStateChanged(user => {
+        if (user) {
+            setActiveUser(user);
+        }
+    });
+};
+
+module.exports = {authUser, getActiveUser, listenForActiveUser};
