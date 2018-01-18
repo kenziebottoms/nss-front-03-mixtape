@@ -1,16 +1,18 @@
 "use strict";
 
 const spotify = require("./apis/spotify");
+const media = require("./media");
+const _ = require("lodash");
 
 const populateUserInfo = () => {
     let user = JSON.parse(localStorage.getItem("spotify_user"));
     if (user) {
-        $("#personal").html(getUserCard(user));
+        $("#personal").prepend(getUserCard(user));
     } else {
         if (spotify.getAccessToken()) {
             spotify.getUserInfo().then(user => {
-                $("#personal").html(getUserCard(user));
-            });
+                $("#personal").prepend(getUserCard(user));
+            }).catch(error => console.log(error));
         } else {
             spotify.logOut();
         }
@@ -30,31 +32,21 @@ const getTrackLinkCard = loadedLink => {
     return cardTemplate({"link": loadedLink});
 };
 
-const blockifyLinkCards = () => {
-    let $cards = $(".card-images");
-    [...$cards].forEach(card => {
-        let $card = $(card);
-        let music = $card.find("img.music");
-        let media = $card.find("img.media");
-        if (music.width() != 0 && media.width() != 0) {
-            let fullWidth = music.width() + media.width();
-            let $parent = $card.parent();
-            let parentPadding = parseInt($parent.css("padding-left")) +
-                                parseInt($parent.css("padding-right"));
-            let parentWidth = $parent.width() - parentPadding;
-            let ratio = parseFloat(parentWidth/fullWidth);
-            media.width(media.width()*ratio);
-            media.height(media.height()*ratio);
-            music.width(music.width()*ratio);
-            music.height(music.height()*ratio);
-            music.css("opacity", 1.0);
-            media.css("opacity", 1.0);
-        } else {
-            setTimeout(() => {
-                blockifyLinkCards();
-            }, 50);
-        }
-    });
+const displayRecentMedia = () => {
+    media.getRecentMedia(20).then(media => {
+        _.forEach(media, item => {
+            console.log(item);
+            if (item.type == "tv") {
+                item.year = item.date.substr(0,4);
+                const template = require("../templates/cards/tv.hbs");
+                $(`#${item.type}`).append(template({item}));
+            } else if (item.type == "movie") {
+                item.year = item.date.substr(0,4);
+                const template = require("../templates/cards/movie.hbs");
+                $(`#${item.type}`).append(template({item}));
+            }
+        });
+    }).catch(error => console.log(error));
 };
 
-module.exports = {populateUserInfo, getTrackLinkCard, blockifyLinkCards};
+module.exports = {populateUserInfo, getTrackLinkCard, displayRecentMedia};

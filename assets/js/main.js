@@ -6,15 +6,11 @@ eventController.initialize();
 const linker = require("./links");
 const view = require("./view");
 const _ = require("lodash");
+const spotify = require("./apis/spotify");
 
 linker.getTrackLinks().then(links => {
-    let linkPromises = _.map(links, link => {
-        return linker.loadLink(link);
-    });
-    Promise.all(linkPromises).then(loadedLinks => {
-        loadedLinks.forEach(link => {
-            $("#firebase").append(view.getTrackLinkCard(link));
-        });
-        view.blockifyLinkCards();
-    });
-});
+    links = _.values(links);
+    let media = _.mapKeys(links, link => link.media);
+}).catch(error => console.log(error));
+
+spotify.printNowPlaying();

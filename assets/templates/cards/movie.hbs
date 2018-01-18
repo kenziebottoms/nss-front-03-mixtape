@@ -1,0 +1,13 @@
+<div class="col-6 col-md-4">
+    <movie class="recently-added card" data-tmdb-id="{{item.id}}">
+        {{#if item.image}}
+            <div class="card-img-top">
+                <img class="card-img-left" src="https://image.tmdb.org/t/p/w400_and_h600_bestv2{{{item.image}}}">
+            </div>
+        {{/if}}
+        <div class="card-body">
+            <h5 class="card-title">{{item.title}}</h5>
+            <h6 class="card-subtitle text-muted">{{item.year}}</h6>
+        </div>
+    </movie>
+</div>

@@ -13,14 +13,13 @@ img {
     max-height: 100%;
 }
 
-#personal {
+#user {
     display: flex;
     .img {
-        max-width: 100px;
+        width: 50px;
         img {
             max-width: 100%;
-            float: left;
-            padding-right: 1rem;
+            padding-right: .5rem;
         }
     }
     .card-body {
@@ -30,11 +29,21 @@ img {
         flex-direction: column;
         h6 {
             margin-bottom: 0;
+            font-size: 1.1rem;
         }
+    }
+    .badge {
+        font-size: 1rem;
     }
 }
 
-.search-result {
+.recently-added {
+    img {
+
+    }
+}
+
+.search-result, {
     margin: .5rem 0;
     display: flex;
     .card-body {
@@ -74,4 +83,8 @@ img {
             border: 1px solid #ccc;
         }
     }
+}
+
+.now-playing {
+    align-items: center;
 }

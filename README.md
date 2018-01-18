@@ -2,7 +2,7 @@
 
 [MindMeister mind map](https://mm.tt/994144307?t=3TqRJrEdLy)
 
-Experimentation with the Spotify, TMDb, and ~~Goodreads~~ Google Books APIs.
+Experimentation with the Spotify, TMDb, and Goodreads ~~Google Books~~ APIs.
 
 ## Goals
 
@@ -15,14 +15,26 @@ Experimentation with the Spotify, TMDb, and ~~Goodreads~~ Google Books APIs.
   - [x] Format results nicely.
 - [x] Fetch search results for TV shows through TMDb API.
   - [x] Format results nicely.
-- [x] Fetch search results for books through Google Books API.
-  - [x] Format results nicely.
+- [x] ~~Fetch search results for books through Google Books API.~~
+  - [x] ~~Format results nicely.~~
+- [ ] Set up proxy server on Heroku to access Goodreads API.
+  - [ ] Fetch results for books through Goodreads API.
+  - [ ] Format results nicely.
 
 ### Firebase
 
 - [ ] Solidify database structure.
-- [x] Pull recent links from database.
+  - [ ] Media
+    - [ ] Books
+    - [x] TV Shows
+    - [x] Movies
+  - [ ] Music
+    - [x] Tracks
+    - [ ] Playlists
+- [ ] Pull recently linked media from database.
+  - [x] Pull all linked media from database.
 - [ ] Store Spotify user data in Firebase.
+  - [x] Store Spotify user token in Local Storage.
 - [ ] Allow user to favorite music or media.
 - [ ] Display information relevant to user's favorite music/media.
 
@@ -50,14 +62,13 @@ Experimentation with the Spotify, TMDb, and ~~Goodreads~~ Google Books APIs.
 - [TV show endpoints](https://developers.themoviedb.org/3/tv/get-tv-details)
 - [Your API key](https://www.themoviedb.org/settings/api)
 
-### Google Books
+### ~~Google Books~~
 
-- [API docs](https://developers.google.com/books/docs/v1/reference/)
-- [Getting started](https://developers.google.com/books/docs/v1/getting_started)
-- [In-depth book search](https://developers.google.com/books/docs/v1/reference/volumes/list)
+~~[API docs](https://developers.google.com/books/docs/v1/reference/)~~
 
-### ~~Goodreads~~
+- ~~[Getting started](https://developers.google.com/books/docs/v1/getting_started)~~
+- ~~[In-depth book search](https://developers.google.com/books/docs/v1/reference/volumes/list)~~
 
-#### ~~[API docs](https://www.goodreads.com/api)~~
+### Goodreads
 
-- ~~[Search books](https://www.goodreads.com/api/index#search.books)~~
+#### [API docs](https://www.goodreads.com/api)

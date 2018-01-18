@@ -2,16 +2,6 @@
 
 const keys = require("./apis/keys");
 
-const getAllCachedTracks = () => {
-    return new Promise((resolve, reject) => {
-        $.ajax({
-            url: `${keys.firebase_db}/songs.json`
-        })
-        .done(response => resolve(response))
-        .fail(error => reject(error));
-    });
-};
-
 const getCachedMusic = typeId => {
     let type = typeId.split(":")[0];
     let id = typeId.split(":")[1];
@@ -25,12 +15,6 @@ const getCachedMusic = typeId => {
     });
 };
 
-// promises a list of tracks associated with the given ids
-const getCachedMusicList = typeIds => {
-    let promiseArray = typeIds.map(typeId => getCachedMusic(typeId));
-    return Promise.all(promiseArray);
-};
-
 const loadLink = link => {
     return new Promise((resolve, reject) => {
         getCachedMusic(link.music).then(music => {
@@ -41,4 +25,4 @@ const loadLink = link => {
     });
 };
 
-module.exports = {getCachedMusicList, getCachedMusic, loadLink};
+module.exports = {getCachedMusic, loadLink};

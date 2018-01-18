@@ -12,11 +12,14 @@ const getCachedMedia = (typeId) => {
     });
 };
 
-const getCachedMediaList = typeIds => {
-    let promiseArray = typeIds.map(typeId => {
-        return getCachedMedia(typeId);
+const getRecentMedia = limit => {
+    return new Promise((resolve, reject) => {
+        $.ajax({
+            url: `${keys.firebase_db}/media.json?orderBy="last_cached"&limitToFirst=${limit}`
+        })
+        .done(response => resolve(response))
+        .fail(error => reject(error));
     });
-    return Promise.all(promiseArray);
 };
 
 const loadLink = link => {
@@ -25,8 +28,8 @@ const loadLink = link => {
             let newLink = Object.assign({}, link);
             newLink.media = media;
             resolve(newLink);
-        });
+        }).catch(error => console.log(error));
     });
 };
 
-module.exports = {getCachedMediaList, getCachedMedia, loadLink};
+module.exports = {getCachedMedia, loadLink, getRecentMedia};
