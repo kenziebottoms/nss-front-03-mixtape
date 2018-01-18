@@ -1,6 +1,8 @@
 "use strict";
 
 const spotify = require("./apis/spotify");
+const media = require("./media");
+const _ = require("lodash");
 
 const populateUserInfo = () => {
     let user = JSON.parse(localStorage.getItem("spotify_user"));
@@ -10,7 +12,7 @@ const populateUserInfo = () => {
         if (spotify.getAccessToken()) {
             spotify.getUserInfo().then(user => {
                 $("#personal").prepend(getUserCard(user));
-            });
+            }).catch(error => console.log(error));
         } else {
             spotify.logOut();
         }
@@ -30,4 +32,17 @@ const getTrackLinkCard = loadedLink => {
     return cardTemplate({"link": loadedLink});
 };
 
-module.exports = {populateUserInfo, getTrackLinkCard};
+const displayRecentMedia = () => {
+    media.getRecentMedia(20).then(media => {
+        _.forEach(media, item => {
+            console.log(item);
+            if (item.type == "tv") {
+                item.year = item.date.substr(0,4);
+                const template = require("../templates/cards/tv.hbs");
+                $(`#${item.type}`).append(template({item}));
+            }
+        });
+    }).catch(error => console.log(error));
+};
+
+module.exports = {populateUserInfo, getTrackLinkCard, displayRecentMedia};

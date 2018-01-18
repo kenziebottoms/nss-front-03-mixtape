@@ -35,7 +35,7 @@ const loadLink = link => {
     return new Promise((resolve, reject) => {
         media.loadLink(link).then(loadedLink => {
             resolve(music.loadLink(loadedLink));
-        });
+        }).catch(error => console.log(error));
     });
 };
 

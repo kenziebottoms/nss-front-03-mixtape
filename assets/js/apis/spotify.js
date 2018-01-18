@@ -45,7 +45,7 @@ const printNowPlaying = () => {
     getNowPlaying().then(nowPlaying => {
         const template = require("../../templates/now-playing.hbs");
         $("#nowPlaying").append(template({nowPlaying}));
-    });
+    }).catch(error => console.log(error));
 };
 
 const getUserInfo = () => {

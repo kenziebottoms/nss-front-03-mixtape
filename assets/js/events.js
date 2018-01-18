@@ -9,6 +9,7 @@ const initialize = () => {
     activateSpotifyAuthButton();
     checkSpotifyAuth();
     view.populateUserInfo();
+    view.displayRecentMedia();
 };
 
 const activateSpotifyAuthButton = () => {
