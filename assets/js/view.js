@@ -40,6 +40,10 @@ const displayRecentMedia = () => {
                 item.year = item.date.substr(0,4);
                 const template = require("../templates/cards/tv.hbs");
                 $(`#${item.type}`).append(template({item}));
+            } else if (item.type == "movie") {
+                item.year = item.date.substr(0,4);
+                const template = require("../templates/cards/movie.hbs");
+                $(`#${item.type}`).append(template({item}));
             }
         });
     }).catch(error => console.log(error));
