@@ -14,7 +14,7 @@ const initialize = () => {
 
 const activateSpotifyAuthButton = () => {
     // "authorize spotify" button
-    $("button.spotify.unauthorized").click(event => {
+    $("a.spotify.unauthorized").click(event => {
         spotify.authorize();
     });
 };
@@ -24,13 +24,13 @@ const checkSpotifyAuth = () => {
     // populate correct spotify buttons
     let spotify_token = spotify.getAccessToken();
     if (spotify_token) {
-        $(".spotify.authorized").removeClass("d-none");
+        $(".spotify.authorized").removeClass("hide");
         if (window.location.href.toString().search("callback") > 0) {
             window.location.href = "http://localhost:8080";
         }
     } else {
         spotify.logOut();
-        $(".spotify.unauthorized").removeClass("d-none");
+        $(".spotify.unauthorized").removeClass("hide");
     }
 };
 

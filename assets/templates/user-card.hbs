@@ -1,11 +1,9 @@
-<div id="user" class="mb-4" data-uri="{{{user.uri}}}">
+<div id="user" data-uri="{{{user.uri}}}">
     <div class="img">
         <img src="{{user.images.0.url}}">
     </div>
-    <div class="card-body">
-        <h6>
-            {{user.id}}
-            <span class="badge badge-success">{{user.followers.total}}</span>
-        </h6>
+    <div class="info">
+        <h5>{{user.id}}</h5>
+        <span data-badge-caption="followers" class="new badge green">{{user.followers.total}}</span>
     </div>
 </div>

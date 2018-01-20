@@ -117,7 +117,7 @@ const setCurrentUser = user => {
 const logOut = () => {
     localStorage.removeItem("spotify_user");
     localStorage.removeItem("spotify_token");
-    $(".spotify.unauthorized").removeClass("d-none");
+    $(".spotify.unauthorized").removeClass("hide");
 };
 
 module.exports = {getAccessToken, authorize, searchTracksTitle, getUserInfo, logOut, getNowPlaying, printNowPlaying};
